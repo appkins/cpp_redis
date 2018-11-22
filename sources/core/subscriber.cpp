@@ -81,7 +81,7 @@ subscriber::connect(
     connect(m_redis_server, m_redis_port, connect_callback, timeout_msecs, max_reconnects, reconnect_interval_msecs);
   }
   else {
-    throw redis_error("cpp_redis::subscriber::connect() could not find master for name " + name);
+    throw redis_error("cpp_redis::subscriber::connect() could not find master for m_name " + name);
   }
 }
 

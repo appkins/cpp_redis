@@ -75,7 +75,7 @@ typedef std\+::function$<$ void(\mbox{\hyperlink{classcpp__redis_1_1reply}{reply
 \begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcpp__redis_1_1client_adda8b3e7b4f9c80ac052753b39178dd5}{connect}} (const std\+::string \&host=\char`\"{}127.\+0.\+0.\+1\char`\"{}, std\+::size\+\_\+t port=6379, const \mbox{\hyperlink{classcpp__redis_1_1client_a8e8f308847caf0b9ce06b817253c65c7}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
 \item 
-void \mbox{\hyperlink{classcpp__redis_1_1client_a15bcb0885129480543482a7da52af892}{connect}} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1client_a8e8f308847caf0b9ce06b817253c65c7}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
+void \mbox{\hyperlink{classcpp__redis_1_1client_a15bcb0885129480543482a7da52af892}{connect}} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_a8e8f308847caf0b9ce06b817253c65c7}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
 \item 
 bool \mbox{\hyperlink{classcpp__redis_1_1client_a378682dda2753feff4c174679bd0f9d5}{is\+\_\+connected}} () const
 \item 
@@ -233,10 +233,10 @@ std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseri
 std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries client\+\_\+reply} (const std\+::string \&mode)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a5c7f977196c1c00e3c732615c0d86ae7}\label{classcpp__redis_1_1client_a5c7f977196c1c00e3c732615c0d86ae7}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries client\+\_\+setname} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries client\+\_\+setname} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_aa1ab41fda6b2536f652720b7720a0b63}\label{classcpp__redis_1_1client_aa1ab41fda6b2536f652720b7720a0b63}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries client\+\_\+setname} (const std\+::string \&name)
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries client\+\_\+setname} (const std\+::string \&m_name)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_ac156d5593e1800742188f0eee9016a84}\label{classcpp__redis_1_1client_ac156d5593e1800742188f0eee9016a84}} 
 \mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries cluster\+\_\+addslots} (const std\+::vector$<$ std\+::string $>$ \&p\+\_\+slots, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
@@ -380,10 +380,10 @@ std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseri
 std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries command\+\_\+getkeys} ()
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a95105c556aa5c070819bc82729d336c5}\label{classcpp__redis_1_1client_a95105c556aa5c070819bc82729d336c5}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries command\+\_\+info} (const std\+::vector$<$ std\+::string $>$ \&command\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries command\+\_\+info} (const std\+::vector$<$ std\+::string $>$ \&command\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_abd02a4d296ed0c160e935cd176862334}\label{classcpp__redis_1_1client_abd02a4d296ed0c160e935cd176862334}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries command\+\_\+info} (const std\+::vector$<$ std\+::string $>$ \&command\+\_\+name)
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries command\+\_\+info} (const std\+::vector$<$ std\+::string $>$ \&command\+\_\+m_name)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a510ede75cc6361f33a4cdd0695f7543f}\label{classcpp__redis_1_1client_a510ede75cc6361f33a4cdd0695f7543f}} 
 \mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries config\+\_\+get} (const std\+::string \&param, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
@@ -1394,38 +1394,38 @@ std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseri
 std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xdel} (const std\+::string \&key, const std\+::vector$<$ std\+::string $>$ \&id\+\_\+members)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a5285eae63adbf09478d0214767363714}\label{classcpp__redis_1_1client_a5285eae63adbf09478d0214767363714}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a7bcf21d1ddbe24ff42e0ee0135a665f9}\label{classcpp__redis_1_1client_a7bcf21d1ddbe24ff42e0ee0135a665f9}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&id, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&id, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_ab275f61a685ecd5773aae3dea7865b05}\label{classcpp__redis_1_1client_ab275f61a685ecd5773aae3dea7865b05}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&id=\char`\"{}\$\char`\"{})
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+create} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&id=\char`\"{}\$\char`\"{})
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a537cac904fb4aa34c1b25d5c9cc86cc4}\label{classcpp__redis_1_1client_a537cac904fb4aa34c1b25d5c9cc86cc4}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a1bf822feb7c09dfb13a87e91ff68b1f9}\label{classcpp__redis_1_1client_a1bf822feb7c09dfb13a87e91ff68b1f9}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&id, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&id, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a4430aaf61ec70ddf2e5c16548452b159}\label{classcpp__redis_1_1client_a4430aaf61ec70ddf2e5c16548452b159}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&id=\char`\"{}\$\char`\"{})
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+set\+\_\+id} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&id=\char`\"{}\$\char`\"{})
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a216e15a21d087ee51c1bfab7720ddcaa}\label{classcpp__redis_1_1client_a216e15a21d087ee51c1bfab7720ddcaa}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+destroy} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+destroy} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a22440ee971e442a217098e0a55c1d5c7}\label{classcpp__redis_1_1client_a22440ee971e442a217098e0a55c1d5c7}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+destroy} (const std\+::string \&key, const std\+::string \&group\+\_\+name)
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+destroy} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a02aaed2ec3345ff5686f79fc7c1ba765}\label{classcpp__redis_1_1client_a02aaed2ec3345ff5686f79fc7c1ba765}} 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+del\+\_\+consumer} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&consumer\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& {\bfseries xgroup\+\_\+del\+\_\+consumer} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&consumer\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1client_a428d246b816234a80e21a1e0b2e0b922}\label{classcpp__redis_1_1client_a428d246b816234a80e21a1e0b2e0b922}} 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+del\+\_\+consumer} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const std\+::string \&consumer\+\_\+name)
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ {\bfseries xgroup\+\_\+del\+\_\+consumer} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const std\+::string \&consumer\+\_\+m_name)
 \item 
-\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& \mbox{\hyperlink{classcpp__redis_1_1client_a972e59c216b86e38a1b77a4ca0bc6785}{xinfo\+\_\+consumers}} (const std\+::string \&key, const std\+::string \&group\+\_\+name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
+\mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& \mbox{\hyperlink{classcpp__redis_1_1client_a972e59c216b86e38a1b77a4ca0bc6785}{xinfo\+\_\+consumers}} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \begin{DoxyCompactList}\small\item\em introspection command used in order to retrieve different information about the consumer groups \end{DoxyCompactList}\item 
-std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ \mbox{\hyperlink{classcpp__redis_1_1client_a6497165de42557c953189305a0f22542}{xinfo\+\_\+consumers}} (const std\+::string \&key, const std\+::string \&group\+\_\+name)
+std\+::future$<$ \mbox{\hyperlink{classcpp__redis_1_1reply}{reply}} $>$ \mbox{\hyperlink{classcpp__redis_1_1client_a6497165de42557c953189305a0f22542}{xinfo\+\_\+consumers}} (const std\+::string \&key, const std\+::string \&group\+\_\+m_name)
 \item 
 \mbox{\hyperlink{classcpp__redis_1_1client}{client}} \& \mbox{\hyperlink{classcpp__redis_1_1client_a99175a1ba56a05cc75c531860aaf5442}{xinfo\+\_\+groups}} (const std\+::string \&key, const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback)
 \item 
@@ -1985,7 +1985,7 @@ custom ctor to specify custom tcp\+\_\+client
 \subsubsection{\texorpdfstring{add\+\_\+sentinel()}{add\_sentinel()}}
 {\footnotesize\ttfamily void cpp\+\_\+redis\+::client\+::add\+\_\+sentinel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host,  }\item[{std\+::size\+\_\+t}]{port,  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
 
-add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1client_adda8b3e7b4f9c80ac052753b39178dd5}{connect()}} or get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name() when autoconnect is enabled.
+add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1client_adda8b3e7b4f9c80ac052753b39178dd5}{connect()}} or get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name() when autoconnect is enabled.
 
 
 \begin{DoxyParams}{Parameters}
@@ -2089,13 +2089,13 @@ Connect to redis server
 \index{cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}!connect@{connect}}
 \index{connect@{connect}!cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}}
 \subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void cpp\+\_\+redis\+::client\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1client_a8e8f308847caf0b9ce06b817253c65c7}{connect\+\_\+callback\+\_\+t}} \&}]{connect\+\_\+callback = {\ttfamily nullptr},  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0},  }\item[{std\+::int32\+\_\+t}]{max\+\_\+reconnects = {\ttfamily 0},  }\item[{std\+::uint32\+\_\+t}]{reconnect\+\_\+interval\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void cpp\+\_\+redis\+::client\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{m_name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1client_a8e8f308847caf0b9ce06b817253c65c7}{connect\+\_\+callback\+\_\+t}} \&}]{connect\+\_\+callback = {\ttfamily nullptr},  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0},  }\item[{std\+::int32\+\_\+t}]{max\+\_\+reconnects = {\ttfamily 0},  }\item[{std\+::uint32\+\_\+t}]{reconnect\+\_\+interval\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 Connect to redis server
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & sentinel name \\
+{\em m_name} & sentinel m_name \\
 \hline
 {\em connect\+\_\+callback} & connect handler to be called on connect events (may be null) \\
 \hline
@@ -2252,7 +2252,7 @@ no need to call commit in case of reconnection the reconnection flow will do it 
 \index{cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}!xinfo\+\_\+consumers@{xinfo\+\_\+consumers}}
 \index{xinfo\+\_\+consumers@{xinfo\+\_\+consumers}!cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}}
 \subsubsection{\texorpdfstring{xinfo\+\_\+consumers()}{xinfo\_consumers()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classcpp__redis_1_1client}{client}}\& cpp\+\_\+redis\+::client\+::xinfo\+\_\+consumers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{group\+\_\+name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&}]{reply\+\_\+callback }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcpp__redis_1_1client}{client}}\& cpp\+\_\+redis\+::client\+::xinfo\+\_\+consumers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{group\+\_\+m_name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1client_af7a65eb21aa25230bfbb0b0203c4fc04}{reply\+\_\+callback\+\_\+t}} \&}]{reply\+\_\+callback }\end{DoxyParamCaption})}
 
 
 
@@ -2262,7 +2262,7 @@ introspection command used in order to retrieve different information about the 
 \begin{DoxyParams}{Parameters}
 {\em key} & stream id \\
 \hline
-{\em group\+\_\+name} & stream consumer group name \\
+{\em group\+\_\+m_name} & stream consumer group m_name \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -2272,7 +2272,7 @@ introspection command used in order to retrieve different information about the 
 \index{cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}!xinfo\+\_\+consumers@{xinfo\+\_\+consumers}}
 \index{xinfo\+\_\+consumers@{xinfo\+\_\+consumers}!cpp\+\_\+redis\+::client@{cpp\+\_\+redis\+::client}}
 \subsubsection{\texorpdfstring{xinfo\+\_\+consumers()}{xinfo\_consumers()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily std\+::future$<$\mbox{\hyperlink{classcpp__redis_1_1reply}{reply}}$>$ cpp\+\_\+redis\+::client\+::xinfo\+\_\+consumers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{group\+\_\+name }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::future$<$\mbox{\hyperlink{classcpp__redis_1_1reply}{reply}}$>$ cpp\+\_\+redis\+::client\+::xinfo\+\_\+consumers (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{const std\+::string \&}]{group\+\_\+m_name }\end{DoxyParamCaption})}
 
 
 
@@ -2282,7 +2282,7 @@ introspection command used in order to retrieve different information about the 
 \begin{DoxyParams}{Parameters}
 {\em key} & stream id \\
 \hline
-{\em group\+\_\+name} & \\
+{\em group\+\_\+m_name} & \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

@@ -47,7 +47,7 @@ typedef std\+::function$<$ void(int64\+\_\+t)$>$ \mbox{\hyperlink{classcpp__redi
 \begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classcpp__redis_1_1subscriber_a6ae8134a9a9b31d6f2434ec4f6e86d3a}{connect}} (const std\+::string \&host=\char`\"{}127.\+0.\+0.\+1\char`\"{}, std\+::size\+\_\+t port=6379, const \mbox{\hyperlink{classcpp__redis_1_1subscriber_a7f9e56873e5b96ad9cb2395dadae1a7a}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
 \begin{DoxyCompactList}\small\item\em Connect to redis server. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classcpp__redis_1_1subscriber_a8fb77a44a1e1f0d99dec639658e2aa7e}{connect}} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1subscriber_a7f9e56873e5b96ad9cb2395dadae1a7a}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
+void \mbox{\hyperlink{classcpp__redis_1_1subscriber_a8fb77a44a1e1f0d99dec639658e2aa7e}{connect}} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1subscriber_a7f9e56873e5b96ad9cb2395dadae1a7a}{connect\+\_\+callback\+\_\+t}} \&connect\+\_\+callback=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0, std\+::int32\+\_\+t max\+\_\+reconnects=0, std\+::uint32\+\_\+t reconnect\+\_\+interval\+\_\+msecs=0)
 \begin{DoxyCompactList}\small\item\em Connect to redis server. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classcpp__redis_1_1subscriber_af73acfc3c1859e6b32bc9a69856e6e59}{is\+\_\+connected}} () const
 \begin{DoxyCompactList}\small\item\em determines client connectivity \end{DoxyCompactList}\item 
@@ -143,7 +143,7 @@ custom ctor to specify custom tcp\+\_\+client
 \subsubsection{\texorpdfstring{add\+\_\+sentinel()}{add\_sentinel()}}
 {\footnotesize\ttfamily void cpp\+\_\+redis\+::subscriber\+::add\+\_\+sentinel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host,  }\item[{std\+::size\+\_\+t}]{port,  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
 
-add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1subscriber_a6ae8134a9a9b31d6f2434ec4f6e86d3a}{connect()}} or get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name() when autoconnect is enabled.
+add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1subscriber_a6ae8134a9a9b31d6f2434ec4f6e86d3a}{connect()}} or get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name() when autoconnect is enabled.
 
 
 \begin{DoxyParams}{Parameters}
@@ -220,7 +220,7 @@ Connect to redis server.
 \index{cpp\+\_\+redis\+::subscriber@{cpp\+\_\+redis\+::subscriber}!connect@{connect}}
 \index{connect@{connect}!cpp\+\_\+redis\+::subscriber@{cpp\+\_\+redis\+::subscriber}}
 \subsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void cpp\+\_\+redis\+::subscriber\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1subscriber_a7f9e56873e5b96ad9cb2395dadae1a7a}{connect\+\_\+callback\+\_\+t}} \&}]{connect\+\_\+callback = {\ttfamily nullptr},  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0},  }\item[{std\+::int32\+\_\+t}]{max\+\_\+reconnects = {\ttfamily 0},  }\item[{std\+::uint32\+\_\+t}]{reconnect\+\_\+interval\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void cpp\+\_\+redis\+::subscriber\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{m_name,  }\item[{const \mbox{\hyperlink{classcpp__redis_1_1subscriber_a7f9e56873e5b96ad9cb2395dadae1a7a}{connect\+\_\+callback\+\_\+t}} \&}]{connect\+\_\+callback = {\ttfamily nullptr},  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0},  }\item[{std\+::int32\+\_\+t}]{max\+\_\+reconnects = {\ttfamily 0},  }\item[{std\+::uint32\+\_\+t}]{reconnect\+\_\+interval\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
 
 
 
@@ -228,7 +228,7 @@ Connect to redis server.
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & sentinel name \\
+{\em m_name} & sentinel m_name \\
 \hline
 {\em connect\+\_\+callback} & connect handler to be called on connect events (may be null) \\
 \hline

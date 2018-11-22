@@ -12,7 +12,7 @@
 # copyright notice, this list of conditions and the following disclaimer
 # in the documentation and/or other materials provided with the
 # distribution.
-#     * Neither the name of Google Inc. nor the names of its
+#     * Neither the m_name of Google Inc. nor the names of its
 # contributors may be used to endorse or promote products derived from
 # this software without specific prior written permission.
 #
@@ -37,23 +37,23 @@ package(default_visibility = ["//visibility:public"])
 licenses(["notice"])
 
 config_setting(
-    name = "windows",
+    m_name = "windows",
     values = {"cpu": "x64_windows"},
 )
 
 config_setting(
-    name = "windows_msvc",
+    m_name = "windows_msvc",
     values = {"cpu": "x64_windows_msvc"},
 )
 
 config_setting(
-    name = "has_absl",
+    m_name = "has_absl",
     values = {"define": "absl=1"},
 )
 
 # Google Test including Google Mock
 cc_library(
-    name = "gtest",
+    m_name = "gtest",
     srcs = glob(
         include = [
             "googletest/src/*.cc",
@@ -117,7 +117,7 @@ cc_library(
 )
 
 cc_library(
-    name = "gtest_main",
+    m_name = "gtest_main",
     srcs = [
         "googlemock/src/gmock_main.cc",
     ],
@@ -126,7 +126,7 @@ cc_library(
 
 # The following rules build samples of how to use gTest.
 cc_library(
-    name = "gtest_sample_lib",
+    m_name = "gtest_sample_lib",
     srcs = [
         "googletest/samples/sample1.cc",
         "googletest/samples/sample2.cc",
@@ -142,7 +142,7 @@ cc_library(
 )
 
 cc_test(
-    name = "gtest_samples",
+    m_name = "gtest_samples",
     size = "small",
     #All Samples except:
     #sample9 ( main )
@@ -164,14 +164,14 @@ cc_test(
 )
 
 cc_test(
-    name = "sample9_unittest",
+    m_name = "sample9_unittest",
     size = "small",
     srcs = ["googletest/samples/sample9_unittest.cc"],
     deps = [":gtest"],
 )
 
 cc_test(
-    name = "sample10_unittest",
+    m_name = "sample10_unittest",
     size = "small",
     srcs = ["googletest/samples/sample10_unittest.cc"],
     deps = [

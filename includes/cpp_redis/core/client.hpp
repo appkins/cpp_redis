@@ -1513,14 +1513,15 @@ namespace cpp_redis {
 			 * @param group_name stream consumer group name
 			 * @return
 			 */
-			client & xinfo_consumers(const std::string &key, const std::string &group_name, const reply_callback_t &reply_callback);
+			client &
+			xinfo_consumers(const std::string &key, const std::string &group_name, const reply_callback_t &reply_callback);
 
-			 /**
-			  * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
-			  * @param key stream id
-			  * @param group_name
-			  * @return
-			  */
+			/**
+			 * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
+			 * @param key stream id
+			 * @param group_name
+			 * @return
+			 */
 			std::future<reply> xinfo_consumers(const std::string &key, const std::string &group_name);
 
 			/**
@@ -1529,7 +1530,7 @@ namespace cpp_redis {
 			 * @param reply_callback
 			 * @return
 			 */
-			client & xinfo_groups(const std::string &key, const reply_callback_t &reply_callback);
+			client &xinfo_groups(const std::string &key, const reply_callback_t &reply_callback);
 
 			/**
 			 * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
@@ -1538,7 +1539,8 @@ namespace cpp_redis {
 			 */
 			std::future<reply> xinfo_groups(const std::string &key);
 
-			client & xinfo_stream(const std::string &key, const reply_callback_t &reply_callback);
+			client &xinfo_stream(const std::string &key, const reply_callback_t &reply_callback);
+
 			std::future<reply> xinfo_stream(const std::string &key);
 
 			/**
@@ -1550,13 +1552,22 @@ namespace cpp_redis {
 			 * @param reply_callback
 			 * @return Integer reply: the number of entries of the stream at key.
 			 */
-			client & xlen(const std::string &key, const reply_callback_t &reply_callback);
+			client &xlen(const std::string &key, const reply_callback_t &reply_callback);
+
 			/**
 			 * @copydoc client::xlen(key, reply_callback)
 			 * @param key
 			 * @return
 			 */
 			std::future<reply> xlen(const std::string &key);
+
+			client &xpending(const std::string &key,
+			                 const std::string &group_name,
+			                 const int &start = 0,
+			                 const int &end = -1,
+			                 const int &count = 10,
+			                 const std::string &consumer_name = "",
+			                 const reply_callback_t &reply_callback = nullptr);
 
 			client &zadd(const std::string &key, const std::vector<std::string> &options,
 			             const std::multimap<std::string, std::string> &score_members,

@@ -75,16 +75,16 @@ function getYPos(item)
 /* A class handling everything associated with the search panel.
 
    Parameters:
-   name - The name of the global variable that will be
+   m_name - The m_name of the global variable that will be
           storing this instance.  Is needed to be able to set timeouts.
    resultPath - path to use for external files
 */
-function SearchBox(name, resultsPath, inFrame, label)
+function SearchBox(m_name, resultsPath, inFrame, label)
 {
-  if (!name || !resultsPath) {  alert("Missing parameters to SearchBox."); }
+  if (!m_name || !resultsPath) {  alert("Missing parameters to SearchBox."); }
 
   // ---------- Instance variables
-  this.name                  = name;
+  this.m_name                  = m_name;
   this.resultsPath           = resultsPath;
   this.keyTimeout            = 0;
   this.keyTimeoutLength      = 500;
@@ -169,7 +169,7 @@ function SearchBox(name, resultsPath, inFrame, label)
 
   this.OnSearchSelectHide = function()
   {
-    this.hideTimeout = setTimeout(this.name +".CloseSelectionWindow()",
+    this.hideTimeout = setTimeout(this.m_name +".CloseSelectionWindow()",
                                   this.closeSelectionTimeout);
   }
 
@@ -224,7 +224,7 @@ function SearchBox(name, resultsPath, inFrame, label)
       if (searchValue != "") // non-empty search
       {
         // set timer for search update
-        this.keyTimeout = setTimeout(this.name + '.Search()',
+        this.keyTimeout = setTimeout(this.m_name + '.Search()',
                                      this.keyTimeoutLength);
       }
       else // empty search field
@@ -424,7 +424,7 @@ function SearchBox(name, resultsPath, inFrame, label)
 // -----------------------------------------------------------------------
 
 // The class that handles everything on the search results page.
-function SearchResults(name)
+function SearchResults(m_name)
 {
     // The number of matches from the last run of <Search()>.
     this.lastMatchCount = 0;

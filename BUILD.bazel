@@ -1,5 +1,5 @@
 cc_library(
-    name = "cpp_redis",
+    m_name = "cpp_redis",
     srcs = [
         "sources/builders/array_builder.cpp",
         "sources/builders/builders_factory.cpp",
@@ -45,7 +45,7 @@ cc_library(
 )
 
 cc_binary(
-    name = "example_cpp_redis_subscriber",
+    m_name = "example_cpp_redis_subscriber",
     srcs = ["examples/cpp_redis_subscriber.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -53,7 +53,7 @@ cc_binary(
 )
 
 cc_binary(
-    name = "example_cpp_redis_kill",
+    m_name = "example_cpp_redis_kill",
     srcs = ["examples/cpp_redis_kill.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -61,7 +61,7 @@ cc_binary(
 )
 
 cc_binary(
-    name = "example_cpp_redis_client",
+    m_name = "example_cpp_redis_client",
     srcs = ["examples/cpp_redis_client.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -69,7 +69,7 @@ cc_binary(
 )
 
 cc_binary(
-    name = "example_cpp_redis_logger",
+    m_name = "example_cpp_redis_logger",
     srcs = ["examples/cpp_redis_logger.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -77,7 +77,7 @@ cc_binary(
 )
 
 cc_binary(
-    name = "example_cpp_redis_future_client",
+    m_name = "example_cpp_redis_future_client",
     srcs = ["examples/cpp_redis_future_client.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -85,7 +85,7 @@ cc_binary(
 )
 
 cc_binary(
-    name = "example_cpp_redis_high_availability_client",
+    m_name = "example_cpp_redis_high_availability_client",
     srcs = ["examples/cpp_redis_high_availability_client.cpp"],
     # TODO (steple): For windows, link ws2_32 instead.
     linkopts = ["-lpthread"],
@@ -100,7 +100,7 @@ cc_binary(
 # Note 2: Some tests require exclusive access to a redis server running at the
 # default port.  Therefor we can only run 1 test at a time.
 cc_test(
-    name = "test",
+    m_name = "test",
     size = "small",
     srcs = [
         "tests/sources/main.cpp",

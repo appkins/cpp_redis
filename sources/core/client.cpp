@@ -73,7 +73,7 @@ namespace cpp_redis {
 		if (m_sentinel.get_master_addr_by_name(name, m_redis_server, m_redis_port, true)) {
 			connect(m_redis_server, m_redis_port, connect_callback, timeout_msecs, max_reconnects, reconnect_interval_msecs);
 		} else {
-			throw redis_error("cpp_redis::client::connect() could not find master for name " + name);
+			throw redis_error("cpp_redis::client::connect() could not find master for m_name " + name);
 		}
 	}
 
@@ -2287,6 +2287,25 @@ namespace cpp_redis {
 	 */
 	client & client::xlen(const std::string &key, const reply_callback_t &reply_callback) {
 		send({"XLEN", key}, reply_callback);
+		return *this;
+	}
+
+	client &
+	client::xpending(const std::string &key, const std::string &group_name, const int &start, const int &end, const int &count,
+	                 const std::string &consumer_name, const client::reply_callback_t &reply_callback) {
+		std::vector<std::string> cmd = {"XPENDING", key, group_name,
+		                                start > 0 ? std::to_string(start) : "-",
+		                                end > -1 ? std::to_string(end) : "+"
+		};
+		if (count > 0) {
+			cmd.push_back("COUNT");
+			cmd.push_back(std::to_string(count));
+		}
+
+		if (!consumer_name.empty()) {
+			cmd.push_back(consumer_name);
+		}
+		send(cmd, reply_callback);
 		return *this;
 	}
 

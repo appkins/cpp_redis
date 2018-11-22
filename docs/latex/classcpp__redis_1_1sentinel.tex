@@ -52,43 +52,43 @@ void \mbox{\hyperlink{classcpp__redis_1_1sentinel_a82c8cb23efab71ff00cf2277bba91
 \item 
 void \mbox{\hyperlink{classcpp__redis_1_1sentinel_a1dfba8240daf7cfa7502f57957cffbda}{connect}} (const std\+::string \&host, std\+::size\+\_\+t port, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_a923e06b5b700c16dffec8a01d2fa9aa4}{sentinel\+\_\+disconnect\+\_\+handler\+\_\+t}} \&disconnect\+\_\+handler=nullptr, std\+::uint32\+\_\+t timeout\+\_\+msecs=0)
 \item 
-bool \mbox{\hyperlink{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name}} (const std\+::string \&name, std\+::string \&host, std\+::size\+\_\+t \&port, bool autoconnect=true)
+bool \mbox{\hyperlink{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name}} (const std\+::string \&m_name, std\+::string \&host, std\+::size\+\_\+t \&port, bool autoconnect=true)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_aaed03955e468d9f7c3df37376ecafc3a}\label{classcpp__redis_1_1sentinel_aaed03955e468d9f7c3df37376ecafc3a}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries ckquorum} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries ckquorum} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_abd4ee07b5a17ca15b74d25702687e53a}\label{classcpp__redis_1_1sentinel_abd4ee07b5a17ca15b74d25702687e53a}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries failover} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries failover} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_ab3c3a6822ebd512217280b0ca1a0f29f}\label{classcpp__redis_1_1sentinel_ab3c3a6822ebd512217280b0ca1a0f29f}} 
 \mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries flushconfig} (const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_a3d08fbc6ae90b93613f0b3c56a6bf1fe}\label{classcpp__redis_1_1sentinel_a3d08fbc6ae90b93613f0b3c56a6bf1fe}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries master} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries master} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_aed4cacf43432630eb2934ce8b8dec104}\label{classcpp__redis_1_1sentinel_aed4cacf43432630eb2934ce8b8dec104}} 
 \mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries masters} (const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_ad4ae72b60a5a03977cda0d3e1f4ee48d}\label{classcpp__redis_1_1sentinel_ad4ae72b60a5a03977cda0d3e1f4ee48d}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries monitor} (const std\+::string \&name, const std\+::string \&ip, std\+::size\+\_\+t port, std\+::size\+\_\+t quorum, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries monitor} (const std\+::string \&m_name, const std\+::string \&ip, std\+::size\+\_\+t port, std\+::size\+\_\+t quorum, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_aba0190b2773d4d1f8d5e4c5aac22ce19}\label{classcpp__redis_1_1sentinel_aba0190b2773d4d1f8d5e4c5aac22ce19}} 
 \mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries ping} (const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_aee344f7f63bc02d13cb9dce08d48d5d9}\label{classcpp__redis_1_1sentinel_aee344f7f63bc02d13cb9dce08d48d5d9}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries remove} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries remove} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_a11d5f170474aa881df3b6f3cbbde3569}\label{classcpp__redis_1_1sentinel_a11d5f170474aa881df3b6f3cbbde3569}} 
 \mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries reset} (const std\+::string \&pattern, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_a38436712626f27867ecff225eed87a7f}\label{classcpp__redis_1_1sentinel_a38436712626f27867ecff225eed87a7f}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries sentinels} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries sentinels} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_a1579c9c9b8ac3cded0a7d70e709e5e1b}\label{classcpp__redis_1_1sentinel_a1579c9c9b8ac3cded0a7d70e709e5e1b}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries set} (const std\+::string \&name, const std\+::string \&option, const std\+::string \&value, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries set} (const std\+::string \&m_name, const std\+::string \&option, const std\+::string \&value, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_aa4b19659807388d276764f9a79132d00}\label{classcpp__redis_1_1sentinel_aa4b19659807388d276764f9a79132d00}} 
-\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries slaves} (const std\+::string \&name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
+\mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}} \& {\bfseries slaves} (const std\+::string \&m_name, const \mbox{\hyperlink{classcpp__redis_1_1sentinel_ae1a150ff8787208c47414397a061c9a7}{reply\+\_\+callback\+\_\+t}} \&reply\+\_\+callback=nullptr)
 \item 
 const std\+::vector$<$ \mbox{\hyperlink{classcpp__redis_1_1sentinel_1_1sentinel__def}{sentinel\+\_\+def}} $>$ \& \mbox{\hyperlink{classcpp__redis_1_1sentinel_adec98cdde0500e44b8fda26a44f14b49}{get\+\_\+sentinels}} (void) const
 \item 
@@ -147,7 +147,7 @@ custom ctor to specify custom tcp\+\_\+client
 \subsubsection{\texorpdfstring{add\+\_\+sentinel()}{add\_sentinel()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcpp__redis_1_1sentinel}{sentinel}}\& cpp\+\_\+redis\+::sentinel\+::add\+\_\+sentinel (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host,  }\item[{std\+::size\+\_\+t}]{port,  }\item[{std\+::uint32\+\_\+t}]{timeout\+\_\+msecs = {\ttfamily 0} }\end{DoxyParamCaption})}
 
-add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1sentinel_a1dfba8240daf7cfa7502f57957cffbda}{connect()}} or \mbox{\hyperlink{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name()}} when autoconnect is enabled.
+add a sentinel definition. Required for \mbox{\hyperlink{classcpp__redis_1_1sentinel_a1dfba8240daf7cfa7502f57957cffbda}{connect()}} or \mbox{\hyperlink{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name()}} when autoconnect is enabled.
 
 
 \begin{DoxyParams}{Parameters}
@@ -224,16 +224,16 @@ disconnect from redis server
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}\label{classcpp__redis_1_1sentinel_a2886493b40b00dfafdd3b22dfe28e0c3}} 
-\index{cpp\+\_\+redis\+::sentinel@{cpp\+\_\+redis\+::sentinel}!get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name@{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name}}
-\index{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name@{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name}!cpp\+\_\+redis\+::sentinel@{cpp\+\_\+redis\+::sentinel}}
-\subsubsection{\texorpdfstring{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name()}{get\_master\_addr\_by\_name()}}
-{\footnotesize\ttfamily bool cpp\+\_\+redis\+::sentinel\+::get\+\_\+master\+\_\+addr\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{std\+::string \&}]{host,  }\item[{std\+::size\+\_\+t \&}]{port,  }\item[{bool}]{autoconnect = {\ttfamily true} }\end{DoxyParamCaption})}
+\index{cpp\+\_\+redis\+::sentinel@{cpp\+\_\+redis\+::sentinel}!get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name@{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name}}
+\index{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name@{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name}!cpp\+\_\+redis\+::sentinel@{cpp\+\_\+redis\+::sentinel}}
+\subsubsection{\texorpdfstring{get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name()}{get\_master\_addr\_by\_name()}}
+{\footnotesize\ttfamily bool cpp\+\_\+redis\+::sentinel\+::get\+\_\+master\+\_\+addr\+\_\+by\+\_\+m_name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{m_name,  }\item[{std\+::string \&}]{host,  }\item[{std\+::size\+\_\+t \&}]{port,  }\item[{bool}]{autoconnect = {\ttfamily true} }\end{DoxyParamCaption})}
 
 Used to find the current redis master by asking one or more sentinels. Use high availability. Handles \mbox{\hyperlink{classcpp__redis_1_1sentinel_a1dfba8240daf7cfa7502f57957cffbda}{connect()}} and \mbox{\hyperlink{classcpp__redis_1_1sentinel_af607d8c5a20ada35daad251f1b1b2f68}{disconnect()}} automatically when autoconnect=true This method is synchronous. No need to call \mbox{\hyperlink{classcpp__redis_1_1sentinel_a8e4d231ac89510c337fe97fe9e642785}{sync\+\_\+commit()}} or process a reply callback. Call \mbox{\hyperlink{classcpp__redis_1_1sentinel_a6c846b71478c330d2cad7aa662dfd681}{add\+\_\+sentinel()}} before using when autoconnect==true
 
 
 \begin{DoxyParams}{Parameters}
-{\em name} & sentinel name \\
+{\em m_name} & sentinel m_name \\
 \hline
 {\em host} & sentinel host \\
 \hline
