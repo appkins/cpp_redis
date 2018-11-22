@@ -1507,11 +1507,35 @@ namespace cpp_redis {
 			std::future<reply>
 			xgroup_del_consumer(const std::string &key, const std::string &group_name, const std::string &consumer_name);
 
+			/**
+			 * @brief introspection command used in order to retrieve different information about the consumer groups
+			 * @param key stream id
+			 * @param group_name stream consumer group name
+			 * @return
+			 */
 			client & xinfo_consumers(const std::string &key, const std::string &group_name, const reply_callback_t &reply_callback);
+
+			 /**
+			  * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
+			  * @param key stream id
+			  * @param group_name
+			  * @return
+			  */
 			std::future<reply> xinfo_consumers(const std::string &key, const std::string &group_name);
 
+			/**
+			 * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
+			 * @param key stream id
+			 * @param reply_callback
+			 * @return
+			 */
 			client & xinfo_groups(const std::string &key, const reply_callback_t &reply_callback);
 
+			/**
+			 * @brief \copybrief client::xinfo_consumers(key, group_name, reply_callback)
+			 * @param key stream id
+			 * @return
+			 */
 			std::future<reply> xinfo_groups(const std::string &key);
 
 			client & xinfo_stream(const std::string &key, const reply_callback_t &reply_callback);
@@ -1527,6 +1551,11 @@ namespace cpp_redis {
 			 * @return Integer reply: the number of entries of the stream at key.
 			 */
 			client & xlen(const std::string &key, const reply_callback_t &reply_callback);
+			/**
+			 * @copydoc client::xlen(key, reply_callback)
+			 * @param key
+			 * @return
+			 */
 			std::future<reply> xlen(const std::string &key);
 
 			client &zadd(const std::string &key, const std::vector<std::string> &options,

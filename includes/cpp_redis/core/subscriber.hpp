@@ -87,21 +87,16 @@ namespace cpp_redis {
 			};
 
 	public:
-			//!
-			//! connect handler, called whenever a new connection even occurred
-			//!
+			//! \brief connect handler, called whenever a new connection even occurred
 			typedef std::function<void(const std::string &host, std::size_t port, connect_state status)> connect_callback_t;
 
-			//!
-			//! Connect to redis server
-			//!
+			//! \brief Connect to redis server
 			//! \param host host to be connected to
 			//! \param port port to be connected to
 			//! \param connect_callback connect handler to be called on connect events (may be null)
 			//! \param timeout_msecs maximum time to connect
 			//! \param max_reconnects maximum attempts of reconnection if connection dropped
 			//! \param reconnect_interval_msecs time between two attempts of reconnection
-			//!
 			void connect(
 					const std::string &host = "127.0.0.1",
 					std::size_t port = 6379,
@@ -110,15 +105,12 @@ namespace cpp_redis {
 					std::int32_t max_reconnects = 0,
 					std::uint32_t reconnect_interval_msecs = 0);
 
-			//!
-			//! Connect to redis server
-			//!
+			//! \brief Connect to redis server
 			//! \param name sentinel name
 			//! \param connect_callback connect handler to be called on connect events (may be null)
 			//! \param timeout_msecs maximum time to connect
 			//! \param max_reconnects maximum attempts of reconnection if connection dropped
 			//! \param reconnect_interval_msecs time between two attempts of reconnection
-			//!
 			void connect(
 					const std::string &name,
 					const connect_callback_t &connect_callback = nullptr,
@@ -126,44 +118,31 @@ namespace cpp_redis {
 					std::int32_t max_reconnects = 0,
 					std::uint32_t reconnect_interval_msecs = 0);
 
-			//!
+			//! \brief determines client connectivity
 			//! \return whether we are connected to the redis server
-			//!
 			bool is_connected() const;
 
-			//!
-			//! disconnect from redis server
-			//!
-			//! \param wait_for_removal when sets to true, disconnect blocks until the underlying TCP client has been effectively removed from the io_service and that all the underlying callbacks have completed.
-			//!
+			//! \brief disconnect from redis server
+			//! \param wait_for_removal when set to true, disconnect blocks until the underlying TCP client has been effectively removed from the io_service and that all the underlying callbacks have completed.
 			void disconnect(bool wait_for_removal = false);
 
-			//!
+			//! \brief determines if reconnect is in progress
 			//! \return whether an attempt to reconnect is in progress
-			//!
 			bool is_reconnecting() const;
 
-			//!
-			//! stop any reconnect in progress
-			//!
+			//! \brief stop any reconnect in progress
 			void cancel_reconnect();
 
 	public:
-			//!
-			//! reply callback called whenever a reply is received
-			//! takes as parameter the received reply
-			//!
+			//! \brief reply callback called whenever a reply is received, takes as parameter the received reply
 			typedef std::function<void(reply &)> reply_callback_t;
 
-			//!
-			//! ability to authenticate on the redis server if necessary
-			//! this method should not be called repeatedly as the storage of reply_callback is NOT threadsafe (only one reply callback is stored for the subscriber client)
+			//! \brief ability to authenticate on the redis server if necessary
+			//! this method should not be called repeatedly as the storage of reply_callback is NOT thread safe (only one reply callback is stored for the subscriber client)
 			//! calling repeatedly auth() is undefined concerning the execution of the associated callbacks
-			//!
 			//! \param password password to be used for authentication
 			//! \param reply_callback callback to be called on auth completion (nullable)
 			//! \return current instance
-			//!
 			subscriber &auth(const std::string &password, const reply_callback_t &reply_callback = nullptr);
 
 			//!

@@ -4142,6 +4142,12 @@ namespace cpp_redis {
 		});
 	}
 
+	/** @htmlinclude https://redis.io/commands/xdel
+	 * @brief introspection command used in order to retrieve different information about the consumer groups
+	 * @param key
+	 * @param group_name stream consumer group name
+	 * @return
+	 */
 	std::future<reply> client::xinfo_consumers(const std::string &key, const std::string &group_name) {
 		return exec_cmd([=](const reply_callback_t &cb) -> client & {
 				return xinfo_consumers(key, group_name, cb);
