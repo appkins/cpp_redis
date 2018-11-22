@@ -192,16 +192,32 @@ namespace cpp_redis {
 		m_read_callback = callback;
 
 		__CPP_REDIS_LOG(debug, "cpp_redis::consumer attempts to subscribe to session_name " + session_name);
-		std::thread sub_loop([&]{
+		/*std::thread sub_loop([this]{
 				while(m_sig_end == 0) {
-					int cq_size = static_cast<int>(m_completion_queue.size());
-					if (cq_size <= max_concurrency) {
-						unprotected_read();
-						std::lock_guard<std::mutex> cq_lock(m_completion_queue_mutex);
+					std::cout << "Max concurrency: " << max_concurrency << std::endl;
+					if (m_processing_count <= max_concurrency) {
+						m_client.send({"XREADGROUP",
+						               "BLOCK", "0",
+						               "COUNT", "1",
+						               "GROUP", m_options.group_name, m_options.name,
+						               "STREAMS", "ars", ">", m_options.session_name});
 					}
 					std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 				}
-		});
+		});*/
+
+		while(m_sig_end == 0) {
+			std::cout << "Max concurrency: " << max_concurrency << std::endl;
+			if (m_processing_count <= max_concurrency) {
+				m_client.send({"XREADGROUP",
+				               "BLOCK", "0",
+				               "COUNT", "1",
+				               "GROUP", m_options.group_name, m_options.name,
+				               "STREAMS", "ars", ">", m_options.session_name});
+			}
+			commit();
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		}
 		__CPP_REDIS_LOG(info, "cpp_redis::consumer subscribed to session_name " + session_name);
 
 		return *this;
@@ -276,56 +292,31 @@ namespace cpp_redis {
 		//	call_acknowledgement_callback(channel.as_string(), m_subscribed_sessions, m_subscribed_sessions_mutex, nb_sessions.as_integer());
 	}
 
-	void consumer::read_reply_handler(network::redis_connection &connection, reply &reply) {
-		__CPP_REDIS_LOG(info, "cpp_redis::consumer received reply");
+	void
+	consumer::read_reply_handler(const std::vector<reply> &reply) {
+		std::map<std::string, std::string> res;
 
-		std::unique_lock<std::mutex> cq_lock(m_completion_queue_mutex);
-		m_completion_queue.push(reply);
+		std::string id = reply[0].as_string();
+
+		if (reply.size() > 1 && reply[1].is_array()) {
+			res = reply[1].as_str_map();
+			res["id"] = id;
+		}
 
 		m_dispatch_queue.dispatch([&](){
 				try {
-
+					m_processing_count++;
+					m_read_callback(id, res);
+					m_processing_count--;
+					std::unique_lock<std::mutex> cq_lock(m_completion_queue_mutex);
+					m_completion_queue.push(id);
 				} catch (const std::exception & exc) {
-
+					m_processing_count--;
 				}
 
 		});
 
-		if (!reply.is_null()) {
-			m_completion_queue.push(reply);
-		}
-
-		//! always return an array
-		//! otherwise, if auth was defined, this should be the AUTH reply
-		//! any other replies from the server are considered as unexpected
-		if (!reply.is_array()) {
-			if (m_auth_reply_callback) {
-				__CPP_REDIS_LOG(debug, "cpp_redis::consumer executes auth callback");
-
-				m_auth_reply_callback(reply);
-				m_auth_reply_callback = nullptr;
-			}
-		}
-
-			return;
-	}
-
-	void
-	consumer::handle_read_success(const std::vector<reply> &reply) {
-		if (reply.size() != 3)
-			return;
-
-		const auto& title   = reply[0];
-		const auto& channel = reply[1];
-		const auto& message = reply[2];
-
-		if (!title.is_string()
-		    || !channel.is_string()
-		    || !message.is_string())
-			return;
-
-		if (title.as_string() != "message")
-			return;
+		return;
 
 		/*std::lock_guard<std::mutex> lock(m_subscribed_sessions_mutex);
 
@@ -364,7 +355,7 @@ namespace cpp_redis {
 		if (array.size() == 3 && array[2].is_integer())
 			handle_acknowledgement_reply(array);
 		else if (array.size() == 3 && array[2].is_string())
-			handle_read_success(array);
+			read_reply_handler(array);
 	}
 
 	void

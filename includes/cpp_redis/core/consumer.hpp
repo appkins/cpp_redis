@@ -184,7 +184,7 @@ namespace cpp_redis {
 			 * @brief subscribe callback, called whenever a new message is published on a subscribed channel
 			 * takes as parameter the channel and the message
 			 */
-			typedef std::function<void(const std::string &, const std::string &)> read_callback_t;
+			typedef std::function<void(const std::string &, const std::map<std::string, std::string> &)> read_callback_t;
 
 			/**
 			 * @brief acknowledgment callback called whenever a subscribe completes: takes as parameter the int returned by the redis server (usually the number of channels you are subscribed to)
@@ -284,7 +284,7 @@ namespace cpp_redis {
 			 * check if reply is valid
 			 * @param reply received reply
 			 */
-			void handle_read_success(const std::vector<reply> &reply);
+			void read_reply_handler(const std::vector<reply> &reply);
 
 			/**
 			 * @brief find channel or pattern that is associated to the reply and call its ack callback
@@ -424,7 +424,12 @@ namespace cpp_redis {
 			/**
 			 * @brief queue for storing new task payloads
 			 */
-			std::queue<reply> m_completion_queue;
+			std::queue<std::string> m_completion_queue;
+
+			/**
+			 * @brief total number of tasks currently being processed
+			 */
+			std::atomic_int32_t m_processing_count;
 
 			/**
 			 * @brief completion queue thread safety
