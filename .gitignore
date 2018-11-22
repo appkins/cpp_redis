@@ -23,6 +23,7 @@
 *.lib
 
 build
+build.*
 deps
 target
 lib
