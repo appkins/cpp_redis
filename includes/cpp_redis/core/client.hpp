@@ -82,7 +82,7 @@ namespace cpp_redis {
 #ifndef __CPP_REDIS_USE_CUSTOM_TCP_CLIENT
 
 			//! ctor
-			client(void);
+			client();
 
 #endif /* __CPP_REDIS_USE_CUSTOM_TCP_CLIENT */
 
@@ -94,7 +94,7 @@ namespace cpp_redis {
 			explicit client(const std::shared_ptr<network::tcp_client_iface> &tcp_client);
 
 			//! dtor
-			~client(void);
+			~client();
 
 			//! copy ctor
 			client(const client &) = delete;
@@ -145,7 +145,7 @@ namespace cpp_redis {
 			//!
 			//! \return whether we are connected to the redis server
 			//!
-			bool is_connected(void) const;
+			bool is_connected() const;
 
 			//!
 			//! disconnect from redis server
@@ -157,12 +157,12 @@ namespace cpp_redis {
 			//!
 			//! \return whether an attempt to reconnect is in progress
 			//!
-			bool is_reconnecting(void) const;
+			bool is_reconnecting() const;
 
 			//!
 			//! stop any reconnect in progress
 			//!
-			void cancel_reconnect(void);
+			void cancel_reconnect();
 
 	public:
 			//!
@@ -199,7 +199,7 @@ namespace cpp_redis {
 			//!
 			//! Please note that, while commit() can safely be called from inside a reply callback, calling sync_commit() from inside a reply callback is not permitted and will lead to undefined behavior, mostly deadlock.
 			//!
-			client &commit(void);
+			client &commit();
 
 			//!
 			//! same as commit(), but synchronous
@@ -207,7 +207,7 @@ namespace cpp_redis {
 			//!
 			//! \return current instance
 			//!
-			client &sync_commit(void);
+			client &sync_commit();
 
 			//!
 			//! same as sync_commit, but with a timeout
@@ -240,33 +240,33 @@ namespace cpp_redis {
 			//!
 			//! \return whether a reconnection attempt should be performed
 			//!
-			bool should_reconnect(void) const;
+			bool should_reconnect() const;
 
 			//!
 			//! resend all pending commands that failed to be sent due to disconnection
 			//!
-			void resend_failed_commands(void);
+			void resend_failed_commands();
 
 			//!
 			//! sleep between two reconnect attempts if necessary
 			//!
-			void sleep_before_next_reconnect_attempt(void);
+			void sleep_before_next_reconnect_attempt();
 
 			//!
 			//! reconnect to the previously connected host
 			//! automatically re authenticate and resubscribe to subscribed channel in case of success
 			//!
-			void reconnect(void);
+			void reconnect();
 
 			//!
 			//! re authenticate to redis server based on previously used password
 			//!
-			void re_auth(void);
+			void re_auth();
 
 			//!
 			//! re select db to redis server based on previously selected db
 			//!
-			void re_select(void);
+			void re_select();
 
 	private:
 			//!
@@ -311,7 +311,7 @@ namespace cpp_redis {
 			//!
 			//! \return sentinel associated to current client
 			//!
-			const sentinel &get_sentinel(void) const;
+			const sentinel &get_sentinel() const;
 
 			//!
 			//! retrieve sentinel for current client
@@ -319,12 +319,12 @@ namespace cpp_redis {
 			//!
 			//! \return sentinel associated to current client
 			//!
-			sentinel &get_sentinel(void);
+			sentinel &get_sentinel();
 
 			//!
 			//! clear all existing sentinels.
 			//!
-			void clear_sentinels(void);
+			void clear_sentinels();
 
 	public:
 			//!
@@ -548,7 +548,7 @@ namespace cpp_redis {
 			client &client_kill(const T &, const Ts &...);
 
 			template<typename T, typename... Ts>
-			std::future<reply> client_kill_future(const T, const Ts...);
+			std::future<reply> client_kill_future(T, const Ts...);
 
 			client &client_list(const reply_callback_t &reply_callback);
 
@@ -1287,12 +1287,12 @@ namespace cpp_redis {
 
 			std::future<reply> slaveof(const std::string &host, int port);
 
-			client &slowlog(const std::string subcommand, const reply_callback_t &reply_callback);
+			client &slowlog(std::string subcommand, const reply_callback_t &reply_callback);
 
 			std::future<reply> slowlog(const std::string &subcommand);
 
 			client &
-			slowlog(const std::string subcommand, const std::string &argument, const reply_callback_t &reply_callback);
+			slowlog(std::string subcommand, const std::string &argument, const reply_callback_t &reply_callback);
 
 			std::future<reply> slowlog(const std::string &subcommand, const std::string &argument);
 
@@ -1507,6 +1507,28 @@ namespace cpp_redis {
 			std::future<reply>
 			xgroup_del_consumer(const std::string &key, const std::string &group_name, const std::string &consumer_name);
 
+			client & xinfo_consumers(const std::string &key, const std::string &group_name, const reply_callback_t &reply_callback);
+			std::future<reply> xinfo_consumers(const std::string &key, const std::string &group_name);
+
+			client & xinfo_groups(const std::string &key, const reply_callback_t &reply_callback);
+
+			std::future<reply> xinfo_groups(const std::string &key);
+
+			client & xinfo_stream(const std::string &key, const reply_callback_t &reply_callback);
+			std::future<reply> xinfo_stream(const std::string &key);
+
+			/**
+			 * @brief Returns the number of entries inside a stream.
+			 * If the specified key does not exist the command returns zero, as if the stream was empty.
+			 * However note that unlike other Redis types, zero-length streams are possible, so you should call TYPE or EXISTS in order to check if a key exists or not.
+			 * Streams are not auto-deleted once they have no entries inside (for instance after an XDEL call), because the stream may have consumer groups associated with it.
+			 * @param key
+			 * @param reply_callback
+			 * @return Integer reply: the number of entries of the stream at key.
+			 */
+			client & xlen(const std::string &key, const reply_callback_t &reply_callback);
+			std::future<reply> xlen(const std::string &key);
+
 			client &zadd(const std::string &key, const std::vector<std::string> &options,
 			             const std::multimap<std::string, std::string> &score_members,
 			             const reply_callback_t &reply_callback);
@@ -1547,12 +1569,12 @@ namespace cpp_redis {
 			std::future<reply> zincrby(const std::string &key, const std::string &incr, const std::string &member);
 
 			client &zinterstore(const std::string &destination, std::size_t numkeys, const std::vector<std::string> &keys,
-			                    const std::vector<std::size_t> weights, aggregate_method method,
+			                    std::vector<std::size_t> weights, aggregate_method method,
 			                    const reply_callback_t &reply_callback);
 
 			std::future<reply>
 			zinterstore(const std::string &destination, std::size_t numkeys, const std::vector<std::string> &keys,
-			            const std::vector<std::size_t> weights, aggregate_method method);
+			            std::vector<std::size_t> weights, aggregate_method method);
 
 			client &zlexcount(const std::string &key, int min, int max, const reply_callback_t &reply_callback);
 
@@ -1906,12 +1928,12 @@ namespace cpp_redis {
 			std::future<reply> zscore(const std::string &key, const std::string &member);
 
 			client &zunionstore(const std::string &destination, std::size_t numkeys, const std::vector<std::string> &keys,
-			                    const std::vector<std::size_t> weights, aggregate_method method,
+			                    std::vector<std::size_t> weights, aggregate_method method,
 			                    const reply_callback_t &reply_callback);
 
 			std::future<reply>
 			zunionstore(const std::string &destination, std::size_t numkeys, const std::vector<std::string> &keys,
-			            const std::vector<std::size_t> weights, aggregate_method method);
+			            std::vector<std::size_t> weights, aggregate_method method);
 
 	private:
 			//! client kill impl
@@ -1985,13 +2007,13 @@ namespace cpp_redis {
 			//!
 			//! reset the queue of pending callbacks
 			//!
-			void clear_callbacks(void);
+			void clear_callbacks();
 
 			//!
 			//! try to commit the pending pipelined
 			//! if client is disconnected, will throw an exception and clear all pending callbacks (call clear_callbacks())
 			//!
-			void try_commit(void);
+			void try_commit();
 
 			//! Execute a command on the client and tie the callback to a future
 			std::future<reply> exec_cmd(const std::function<client &(const reply_callback_t &)> &f);

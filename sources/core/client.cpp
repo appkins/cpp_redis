@@ -2261,6 +2261,35 @@ namespace cpp_redis {
 		return *this;
 	}
 
+	client & client::xinfo_consumers(const std::string &key, const std::string &group_name, const reply_callback_t &reply_callback) {
+		send({"XINFO", "CONSUMERS", key, group_name}, reply_callback);
+		return *this;
+	}
+
+	client & client::xinfo_groups(const std::string &key, const reply_callback_t &reply_callback) {
+		send({"XINFO", "GROUPS", key}, reply_callback);
+		return *this;
+	}
+
+	client & client::xinfo_stream(const std::string &key, const reply_callback_t &reply_callback) {
+		send({"XINFO", "STREAM", key}, reply_callback);
+		return *this;
+	}
+
+	/**
+	 * @brief Returns the number of entries inside a stream.
+	 * If the specified key does not exist the command returns zero, as if the stream was empty.
+	 * However note that unlike other Redis types, zero-length streams are possible, so you should call TYPE or EXISTS in order to check if a key exists or not.
+	 * Streams are not auto-deleted once they have no entries inside (for instance after an XDEL call), because the stream may have consumer groups associated with it.
+	 * @param key
+	 * @param reply_callback
+	 * @return Integer reply: the number of entries of the stream at key.
+	 */
+	client & client::xlen(const std::string &key, const reply_callback_t &reply_callback) {
+		send({"XLEN", key}, reply_callback);
+		return *this;
+	}
+
 	client &
 	client::zadd(const std::string &key, const std::vector<std::string> &options,
 	             const std::multimap<std::string, std::string> &score_members, const reply_callback_t &reply_callback) {
@@ -4110,6 +4139,30 @@ namespace cpp_redis {
 	client::xgroup_del_consumer(const std::string &key, const std::string &group_name, const std::string &consumer_name) {
 		return exec_cmd([=](const reply_callback_t &cb) -> client & {
 				return xgroup_del_consumer(key, group_name, consumer_name, cb);
+		});
+	}
+
+	std::future<reply> client::xinfo_consumers(const std::string &key, const std::string &group_name) {
+		return exec_cmd([=](const reply_callback_t &cb) -> client & {
+				return xinfo_consumers(key, group_name, cb);
+		});
+	}
+
+	std::future<reply> client::xinfo_groups(const std::string &key) {
+		return exec_cmd([=](const reply_callback_t &cb) -> client & {
+				return xinfo_groups(key, cb);
+		});
+	}
+
+	std::future<reply> client::xinfo_stream(const std::string &key) {
+		return exec_cmd([=](const reply_callback_t &cb) -> client & {
+				return xinfo_stream(key, cb);
+		});
+	}
+
+	std::future<reply> client::xlen(const std::string &key) {
+		return exec_cmd([=](const reply_callback_t &cb) -> client & {
+				return xlen(key, cb);
 		});
 	}
 
