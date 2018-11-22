@@ -27,7 +27,6 @@ build.*
 deps
 target
 lib
-docs/*
 
 # Executables
 *.exe
